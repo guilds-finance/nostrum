@@ -48,7 +48,7 @@ defmodule Nostrum.ConsumerGroup do
     payload = {:event, event}
 
     @scope_name
-    |> :pg.get_members(@group_name)
+    |> :pg.get_local_members(@group_name)
     |> Enum.each(&send(&1, payload))
 
     dispatch(events)
